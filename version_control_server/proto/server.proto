@@ -1,0 +1,14 @@
+syntax = "proto3";
+package bingo.dfs;
+
+message QueryServerStatusRequest {
+}
+
+message QueryServerStatusResponse {
+  optional bool server_ok = 1;
+}
+
+service BdfsVersionControlService {
+  rpc QueryServerStatus(QueryServerStatusRequest)
+      returns (QueryServerStatusResponse);
+}

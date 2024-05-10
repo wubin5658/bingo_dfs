@@ -1,5 +1,9 @@
 workspace(name = "bingo_dfs")
 
-load("//third_party:workspace.bzl", "initialize_third_party_repos")
+load("//bazel:workspace.bzl", "bingo_repositories")
 
-initialize_third_party_repos()
+bingo_repositories()
+
+load("//bazel:bingo_init_deps.bzl", "bingo_init_deps")
+
+bingo_init_deps()
