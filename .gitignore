@@ -1,2 +1,5 @@
 # bazel directories
 bazel-*
+
+# bazel files
+MODULE*
