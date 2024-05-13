@@ -1,0 +1,69 @@
+diff --git a/bzl/repositories.bzl b/bzl/repositories.bzl
+index 8af6328..0a1abaf 100644
+--- a/bzl/repositories.bzl
++++ b/bzl/repositories.bzl
+@@ -32,7 +32,10 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:flann.BUILD",
+         sha256 = "9080a91be5759a0b4ef41f62e58896a714ec85d37c2567341a0503039655b1eb",
+         strip_prefix = "flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d",
+-        urls = ["https://github.com/flann-lib/flann/archive/1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz"],
++        urls = [
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",
++            "https://github.com/flann-lib/flann/archive/1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",
++        ],
+     )
+ 
+     maybe(
+@@ -41,7 +44,10 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:lz4.BUILD",
+         sha256 = "030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1",
+         strip_prefix = "lz4-1.9.3",
+-        urls = ["https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz"],
++        urls = [
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/lz4-1.9.3.tar.gz",
++            "https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz",
++        ],
+     )
+ 
+     maybe(
+@@ -51,7 +57,7 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:zlib.BUILD",
+         strip_prefix = "zlib-cacf7f1d4e3d44d871b605da3b647f07d718623f",
+         urls = [
+-            "https://mirror.bazel.build/github.com/madler/zlib/archive/cacf7f1d4e3d44d871b605da3b647f07d718623f.tar.gz",
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/zlib-cacf7f1d4e3d44d871b605da3b647f07d718623f.tar.gz",
+             "https://github.com/madler/zlib/archive/cacf7f1d4e3d44d871b605da3b647f07d718623f.tar.gz",
+         ],
+     )
+@@ -63,8 +69,8 @@ def pcl_repositories():
+         sha256 = "7f415186d38ca71c23058386d7cf5135c8beda821ee1beecdc2a7a26c0356615",
+         strip_prefix = "libpng-1.2.57",
+         urls = [
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/libpng-1.2.57.tar.gz",
+             "https://github.com/glennrp/libpng/archive/v1.2.57.tar.gz",
+-            "https://mirror.bazel.build/github.com/glennrp/libpng/archive/v1.2.57.tar.gz",
+         ],
+     )
+ 
+@@ -74,7 +80,10 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:pcl.BUILD",
+         sha256 = "85fd437a1b326de57d85d9862a1ca3e833301f8d78a1cafdbe48113ffd9f9168",
+         strip_prefix = "pcl-1d3622c1e624994bc013e3e66bc5d98fbb807a89",
+-        urls = ["https://github.com/PointCloudLibrary/pcl/archive/1d3622c1e624994bc013e3e66bc5d98fbb807a89.tar.gz"],
++        urls = [
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/pcl-1d3622c1e624994bc013e3e66bc5d98fbb807a89.tar.gz",
++            "https://github.com/PointCloudLibrary/pcl/archive/1d3622c1e624994bc013e3e66bc5d98fbb807a89.tar.gz",
++        ],
+     )
+ 
+     maybe(
+@@ -83,5 +92,8 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:qhull.BUILD",
+         sha256 = "cf7235b76244595a86b9407b906e3259502b744528318f2178155e5899d6cf9f",
+         strip_prefix = "qhull-2019.1",
+-        urls = ["https://github.com/qhull/qhull/archive/2019.1.tar.gz"],
++        urls = [
++            "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/qhull-2019.1.tar.gz",
++            "https://github.com/qhull/qhull/archive/2019.1.tar.gz",
++        ],
+     )

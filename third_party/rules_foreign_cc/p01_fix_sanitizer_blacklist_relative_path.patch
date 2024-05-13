@@ -1,0 +1,11 @@
+--- a/foreign_cc/private/cc_toolchain_util.bzl	2022-08-03 03:56:49.000000000 +0800
++++ b/foreign_cc/private/cc_toolchain_util.bzl	2023-04-11 22:18:25.954438603 +0800
+@@ -424,6 +424,8 @@
+     new_text = _prefix(text, "external/", root_str)
+     if new_text == text:
+         new_text = _prefix(text, workspace_name + "/", root_str)
++    if new_text == text:
++        new_text = _prefix(text, "bazel/sanitizers/", root_str)
+ 
+     # Check to see if the text is already absolute on a unix and windows system
+     is_already_absolute = text.startswith("/") or \

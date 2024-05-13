@@ -1,0 +1,20 @@
+--- a/boost/interprocess/sync/interprocess_semaphore.hpp
++++ b/boost/interprocess/sync/interprocess_semaphore.hpp
+@@ -34,6 +34,7 @@
+        defined(BOOST_INTERPROCESS_POSIX_PROCESS_SHARED)    && \
+        defined(BOOST_INTERPROCESS_POSIX_UNNAMED_SEMAPHORES)
+    #include <boost/interprocess/sync/posix/semaphore.hpp>
++   #include <boost/interprocess/sync/spin/semaphore.hpp>
+    #define BOOST_INTERPROCESS_SEMAPHORE_USE_POSIX
+ #elif !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && defined (BOOST_INTERPROCESS_WINDOWS)
+    //Experimental...
+@@ -97,7 +98,8 @@ class interprocess_semaphore
+    #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
+    private:
+    #if defined(BOOST_INTERPROCESS_SEMAPHORE_USE_POSIX)
+-      typedef ipcdetail::posix_semaphore internal_sem_t;
++      //typedef ipcdetail::posix_semaphore internal_sem_t;
++      typedef ipcdetail::spin_semaphore internal_sem_t;
+    #elif defined(BOOST_INTERPROCESS_SEMAPHORE_USE_WINAPI)
+       typedef ipcdetail::winapi_semaphore internal_sem_t;
+    #else

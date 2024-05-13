@@ -1,0 +1,20 @@
+diff --git a/bazel/folly.bzl b/bazel/folly.bzl
+index 6e40cf4..23fab49 100644
+--- a/bazel/folly.bzl
++++ b/bazel/folly.bzl
+@@ -253,12 +253,14 @@ def folly_library(
+             "-Wno-unused",
+             "-Wunused-label",
+             "-Wunused-result",
+-            "-Wshadow-compatible-local",
+             "-Wno-noexcept-type",
+             "-std=gnu++14",
+         ] + select({
+             ":linux_x86_64": ["-mpclmul"],
+             "//conditions:default": [],
++        }) + select({
++            "@bazel_tools//tools/cpp:gcc": ["-Wshadow-compatible-local"],
++            "//conditions:default": [],
+         }),
+         includes = ["."],
+         linkopts = [

@@ -1,0 +1,11 @@
+--- a/python/versions.bzl	2022-04-22 21:54:48.000000000 +0800
++++ b/python/versions.bzl	2023-11-01 16:27:08.178833100 +0800
+@@ -153,6 +153,8 @@
+         python_version = python_version,
+         build = "static-install_only" if (WINDOWS_NAME in platform) else "install_only",
+     )
++    if base_url != DEFAULT_RELEASE_BASE_URL:
++        release_filename = release_filename.replace("+", "%2B")
+     url = "/".join([base_url, release_filename])
+     return (release_filename, url, strip_prefix)
+ 

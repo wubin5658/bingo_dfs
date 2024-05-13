@@ -1,0 +1,12 @@
+diff --git a/bzl/pcl.bzl b/bzl/pcl.bzl
+index f8359d1..82963c6 100644
+--- a/bzl/pcl.bzl
++++ b/bzl/pcl.bzl
+@@ -153,6 +153,7 @@ def pcl_library(name, **kwargs):
+     native.cc_library(
+         name = name,
+         srcs = native.glob([
++            "{}/src/**/*.c".format(name),
+             "{}/src/**/*.cpp".format(name),
+             "{}/include/**/*.hpp".format(name),
+         ], exclude = exclude_srcs),

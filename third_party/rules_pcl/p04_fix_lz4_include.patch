@@ -1,0 +1,36 @@
+diff --git a/bzl/repositories.bzl b/bzl/repositories.bzl
+index d5b270f..99da2a5 100644
+--- a/bzl/repositories.bzl
++++ b/bzl/repositories.bzl
+@@ -32,6 +32,10 @@ def pcl_repositories():
+         build_file = "@rules_pcl//third_party:flann.BUILD",
+         sha256 = "9080a91be5759a0b4ef41f62e58896a714ec85d37c2567341a0503039655b1eb",
+         strip_prefix = "flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d",
++        patch_args = ["-p1"],
++        patches = [
++            "@rules_pcl//third_party:p02_fix_lz4_include.patch",
++        ],
+         urls = [
+             "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/flann-1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",
+             "https://github.com/flann-lib/flann/archive/1d04523268c388dabf1c0865d69e1b638c8c7d9d.tar.gz",
+diff --git a/third_party/p02_fix_lz4_include.patch b/third_party/p02_fix_lz4_include.patch
+new file mode 100644
+index 0000000..fcc5033
+--- /dev/null
++++ b/third_party/p02_fix_lz4_include.patch
+@@ -0,0 +1,15 @@
++diff --git a/src/cpp/flann/util/serialization.h b/src/cpp/flann/util/serialization.h
++index cdc2e5e..64bb7d1 100644
++--- a/src/cpp/flann/util/serialization.h
+++++ b/src/cpp/flann/util/serialization.h
++@@ -6,8 +6,8 @@
++ #include <cstdlib>
++ #include <cstring>
++ #include <stdio.h>
++-#include <lz4.h>
++-#include <lz4hc.h>
+++#include <lz4/lz4.h>
+++#include <lz4/lz4hc.h>
++
++
++ namespace flann

@@ -1,0 +1,18 @@
+diff --git a/boost/boost.bzl b/boost/boost.bzl
+index d9e106c..1f4e48f 100644
+--- a/boost/boost.bzl
++++ b/boost/boost.bzl
+@@ -215,6 +215,13 @@ def boost_deps():
+         http_archive,
+         name = "boost",
+         build_file = "@com_github_nelhage_rules_boost//:BUILD.boost",
++        patch_args = ["-p1"],
++        patches = [
++          "@com_qcraft//third_party/rules_boost:p05_pthread_mutex_attr.patch",
++          "@com_qcraft//third_party/rules_boost:p07_workaround_tidy_uninitialized_assign.patch",
++          "@com_qcraft//third_party/rules_boost:p08_fix_boostorg_mpl_issue_69.patch",
++          "@com_qcraft//third_party/rules_boost:p09_boost_interprocess_semaphore_use_spinlock.patch",
++        ],
+         patch_cmds = ["rm -f doc/pdf/BUILD"],
+         patch_cmds_win = ["Remove-Item -Force doc/pdf/BUILD"],
+         sha256 = "7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca",

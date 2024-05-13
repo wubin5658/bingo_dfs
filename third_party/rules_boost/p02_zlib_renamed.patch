@@ -1,0 +1,26 @@
+diff --git a/BUILD.boost b/BUILD.boost
+index 05d34a3..5ac733d 100644
+--- a/BUILD.boost
++++ b/BUILD.boost
+@@ -1061,7 +1061,7 @@ boost_library(
+         ":type_traits",
+         ":utility",
+         "@com_github_facebook_zstd//:zstd",
+-        "@net_zlib_zlib//:zlib",
++        "@zlib//:zlib",
+         "@org_bzip_bzip2//:bz2lib",
+         "@org_lzma_lzma//:lzma",
+     ],
+diff --git a/boost/boost.bzl b/boost/boost.bzl
+index c6ed1da..27fa4c4 100644
+--- a/boost/boost.bzl
++++ b/boost/boost.bzl
+@@ -161,7 +161,7 @@ def boost_deps():
+ 
+     maybe(
+         http_archive,
+-        name = "net_zlib_zlib",
++        name = "zlib",
+         build_file = "@com_github_nelhage_rules_boost//:BUILD.zlib",
+         sha256 = "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1",
+         strip_prefix = "zlib-1.2.11",

@@ -1,0 +1,71 @@
+diff --git a/protoc-gen-grpc-gateway/internal/gengateway/BUILD.bazel b/protoc-gen-grpc-gateway/internal/gengateway/BUILD.bazel
+index 114b260..68b66cd 100644
+--- a/protoc-gen-grpc-gateway/internal/gengateway/BUILD.bazel
++++ b/protoc-gen-grpc-gateway/internal/gengateway/BUILD.bazel
+@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+ package(default_visibility = ["//protoc-gen-grpc-gateway:__subpackages__"])
+ 
+ go_library(
+-    name = "go_default_library",
++    name = "gengateway",
+     srcs = [
+         "doc.go",
+         "generator.go",
+@@ -36,3 +36,9 @@ go_test(
+         "@io_bazel_rules_go//proto/wkt:descriptor_go_proto",
+     ],
+ )
++
++alias(
++    name = "go_default_library",
++    actual = ":gengateway",
++    visibility = ["//protoc-gen-grpc-gateway:__subpackages__"],
++)
+diff --git a/runtime/BUILD.bazel b/runtime/BUILD.bazel
+index 58b72b9..27b3277 100644
+--- a/runtime/BUILD.bazel
++++ b/runtime/BUILD.bazel
+@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+ package(default_visibility = ["//visibility:public"])
+ 
+ go_library(
+-    name = "go_default_library",
++    name = "runtime",
+     srcs = [
+         "context.go",
+         "convert.go",
+@@ -83,3 +83,10 @@ go_test(
+         "@org_golang_google_grpc//status:go_default_library",
+     ],
+ )
++
++alias(
++    name = "go_default_library",
++    actual = ":runtime",
++    visibility = ["//visibility:public"],
++)
++
+diff --git a/utilities/BUILD.bazel b/utilities/BUILD.bazel
+index 7109d79..c77f99f 100644
+--- a/utilities/BUILD.bazel
++++ b/utilities/BUILD.bazel
+@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+ package(default_visibility = ["//visibility:public"])
+ 
+ go_library(
+-    name = "go_default_library",
++    name = "utilities",
+     srcs = [
+         "doc.go",
+         "pattern.go",
+@@ -19,3 +19,10 @@ go_test(
+     srcs = ["trie_test.go"],
+     embed = [":go_default_library"],
+ )
++
++alias(
++    name = "go_default_library",
++    actual = ":utilities",
++    visibility = ["//visibility:public"],
++)
++

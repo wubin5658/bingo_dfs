@@ -1,0 +1,42 @@
+diff --git a/bazel/grpc_deps.bzl b/bazel/grpc_deps.bzl
+index 9179107..6fe1728 100644
+--- a/bazel/grpc_deps.bzl
++++ b/bazel/grpc_deps.bzl
+@@ -314,9 +314,9 @@ def grpc_deps():
+             sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
+         )
+ 
+-    if "bazel_compdb" not in native.existing_rules():
++    if "com_grail_bazel_compdb" not in native.existing_rules():
+         http_archive(
+-            name = "bazel_compdb",
++            name = "com_grail_bazel_compdb",
+             sha256 = "bcecfd622c4ef272fd4ba42726a52e140b961c4eac23025f18b346c968a8cfb4",
+             strip_prefix = "bazel-compilation-database-0.4.5",
+             urls = [
+diff --git a/tools/distrib/gen_compilation_database.py b/tools/distrib/gen_compilation_database.py
+index 88f9538..87ff250 100755
+--- a/tools/distrib/gen_compilation_database.py
++++ b/tools/distrib/gen_compilation_database.py
+@@ -40,7 +40,7 @@ def generateCompilationDatabase(args):
+     ]
+ 
+     subprocess.check_call(["bazel", "build"] + bazel_options + [
+-        "--aspects=@bazel_compdb//:aspects.bzl%compilation_database_aspect",
++        "--aspects=@com_grail_bazel_compdb//:aspects.bzl%compilation_database_aspect",
+         "--output_groups=compdb_files,header_files"
+     ] + args.bazel_targets)
+ 
+diff --git a/tools/run_tests/sanity/check_bazel_workspace.py b/tools/run_tests/sanity/check_bazel_workspace.py
+index 257f2b4..2c124ec 100755
+--- a/tools/run_tests/sanity/check_bazel_workspace.py
++++ b/tools/run_tests/sanity/check_bazel_workspace.py
+@@ -33,7 +33,7 @@ git_submodule_hashes = {
+ 
+ _BAZEL_SKYLIB_DEP_NAME = 'bazel_skylib'
+ _BAZEL_TOOLCHAINS_DEP_NAME = 'bazel_toolchains'
+-_BAZEL_COMPDB_DEP_NAME = 'bazel_compdb'
++_BAZEL_COMPDB_DEP_NAME = 'com_grail_bazel_compdb'
+ _TWISTED_TWISTED_DEP_NAME = 'com_github_twisted_twisted'
+ _YAML_PYYAML_DEP_NAME = 'com_github_yaml_pyyaml'
+ _TWISTED_INCREMENTAL_DEP_NAME = 'com_github_twisted_incremental'

@@ -1,0 +1,17 @@
+diff --git a/bazel/cc_grpc_library.bzl b/bazel/cc_grpc_library.bzl
+index 9c31f0c..6533556 100644
+--- a/bazel/cc_grpc_library.bzl
++++ b/bazel/cc_grpc_library.bzl
+@@ -111,8 +111,9 @@ def cc_grpc_library(
+             name = name,
+             srcs = [":" + codegen_grpc_target],
+             hdrs = [":" + codegen_grpc_target],
+-            deps = deps +
+-                   extra_deps +
+-                   ["@com_github_grpc_grpc//:grpc++_codegen_proto"],
++            deps = deps + extra_deps + [
++                "@com_github_grpc_grpc//:grpc++_codegen_proto",
++                "@com_github_grpc_grpc//:grpc++_codegen_base",
++            ],
+             **kwargs
+         )

@@ -3,12 +3,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def repo():
-    protobuf_version = "26.1"
+    version = "3.19.4"
     http_archive(
         name = "com_google_protobuf",
-        sha256 = "4fc5ff1b2c339fb86cd3a25f0b5311478ab081e65ad258c6789359cd84d421f8",
-        strip_prefix = "protobuf-{}".format(protobuf_version),
+        strip_prefix = "protobuf-{}".format(version),
+        sha256 = "3bd7828aa5af4b13b99c191e8b1e884ebfa9ad371b0ce264605d347f135d2568",
         urls = [
-            "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v{}.tar.gz".format(protobuf_version),
+            "https://github.com/protocolbuffers/protobuf/archive/v{}.tar.gz".format(version),
         ],
     )

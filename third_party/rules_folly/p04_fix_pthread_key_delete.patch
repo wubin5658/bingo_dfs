@@ -1,0 +1,46 @@
+diff --git a/bazel/folly_deps.bzl b/bazel/folly_deps.bzl
+index fad9bf9..857db03 100644
+--- a/bazel/folly_deps.bzl
++++ b/bazel/folly_deps.bzl
+@@ -1,6 +1,9 @@
+ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
+ 
++def clean_dep(dep):
++    return str(Label(dep))
++
+ def folly_deps(syslibs = False):
+     maybe(
+         http_archive,
+@@ -139,4 +142,8 @@ def folly_deps(syslibs = False):
+         urls = [
+             "https://github.com/facebook/folly/archive/v{}.tar.gz".format(folly_version),
+         ],
++        patch_args = ["-p1"],
++        patches = [
++            clean_dep("@rules_folly//bazel:p02_folly_pthread_key_delete.patch"),
++        ]
+     )
+diff --git a/bazel/p02_folly_pthread_key_delete.patch b/bazel/p02_folly_pthread_key_delete.patch
+new file mode 100644
+index 0000000..a2f56b7
+--- /dev/null
++++ b/bazel/p02_folly_pthread_key_delete.patch
+@@ -0,0 +1,17 @@
++diff --git a/folly/detail/ThreadLocalDetail.h b/folly/detail/ThreadLocalDetail.h
++index ed18dcc2e..96b14b5f4 100644
++--- a/folly/detail/ThreadLocalDetail.h
+++++ b/folly/detail/ThreadLocalDetail.h
++@@ -253,9 +253,9 @@ class PthreadKeyUnregister {
++     // ~PthreadKeyUnregister logic is not safe.
++ #if !defined(__APPLE__) && !defined(_MSC_VER)
++     MSLGuard lg(lock_);
++-    while (size_) {
++-      pthread_key_delete(keys_[--size_]);
++-    }
+++    //while (size_) {
+++    //  pthread_key_delete(keys_[--size_]);
+++    //}
++ #endif
++   }
++

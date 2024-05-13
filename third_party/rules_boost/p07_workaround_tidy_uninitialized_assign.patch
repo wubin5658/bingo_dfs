@@ -1,0 +1,21 @@
+diff -aruN boost_1_76_0.orig/boost/geometry/policies/robustness/get_rescale_policy.hpp boost_1_76_0/boost/geometry/policies/robustness/get_rescale_policy.hpp
+--- boost_1_76_0.orig/boost/geometry/policies/robustness/get_rescale_policy.hpp	2023-08-22 17:43:42.632801965 +0800
++++ boost_1_76_0/boost/geometry/policies/robustness/get_rescale_policy.hpp	2023-08-22 17:46:24.273362180 +0800
+@@ -216,7 +216,7 @@
+ 
+         point_type min_point;
+         robust_point_type min_robust_point;
+-        factor_type factor;
++        factor_type factor = 1;
+         init_rescale_policy(geometry, min_point, min_robust_point,
+                             factor, strategy);
+ 
+@@ -240,7 +240,7 @@
+ 
+         point_type min_point;
+         robust_point_type min_robust_point;
+-        factor_type factor;
++        factor_type factor = 1;
+         init_rescale_policy(geometry1, geometry2, min_point, min_robust_point,
+                             factor, strategy1, strategy2);
+ 

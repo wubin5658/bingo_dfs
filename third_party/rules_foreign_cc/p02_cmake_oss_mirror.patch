@@ -1,0 +1,20 @@
+diff --git a/toolchains/prebuilt_toolchains.bzl b/toolchains/prebuilt_toolchains.bzl
+index dabfb95..55722a7 100644
+--- a/toolchains/prebuilt_toolchains.bzl
++++ b/toolchains/prebuilt_toolchains.bzl
+@@ -72,6 +72,7 @@ def _cmake_toolchains(version, register_toolchains):
+             http_archive,
+             name = "cmake-3.23.2-linux-aarch64",
+             urls = [
++                "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/cmake-3.23.2-linux-aarch64.tar.gz",
+                 "https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-aarch64.tar.gz",
+             ],
+             sha256 = "f2654bf780b53f170bbbec44d8ac67d401d24788e590faa53036a89476efa91e",
+@@ -86,6 +87,7 @@ def _cmake_toolchains(version, register_toolchains):
+             http_archive,
+             name = "cmake-3.23.2-linux-x86_64",
+             urls = [
++                "https://qcraft-web.oss-cn-beijing.aliyuncs.com/cache/packages/cmake-3.23.2-linux-x86_64.tar.gz",
+                 "https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.tar.gz",
+             ],
+             sha256 = "aaced6f745b86ce853661a595bdac6c5314a60f8181b6912a0a4920acfa32708",
